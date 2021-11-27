@@ -1,5 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:course_management_system/Pages/account_page.dart';
+import 'package:course_management_system/Pages/home_page.dart';
+import 'package:course_management_system/Pages/login_page.dart';
+import 'package:course_management_system/Pages/login_page_student.dart';
+import 'package:course_management_system/Pages/to_do_page.dart';
+import 'package:course_management_system/Routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,15 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-            child: Column(
-          children: [
-            Text("CS261 Group Project"),
-            Text("Akash has accepted and Initalized the project.")
-          ],
-        )),
-      ),
+      initialRoute: MyRoutes.LoginPage,
+      routes: {
+        MyRoutes.HomePage: (context) => HomePage(),
+        MyRoutes.AccountPage: (context) => AccountPage(),
+        MyRoutes.ToDoPage: (context) => ToDoPage(),
+        MyRoutes.LoginPage: (context) => LoginPage(),
+        MyRoutes.StudentLoginPage: (context) => StudentLoginPage(),
+      },
     );
   }
 }
