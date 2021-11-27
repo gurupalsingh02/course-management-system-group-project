@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
             child: Column(
           children: [
             Text("CS261 Group Project"),
+            Text("Akash has accepted and Initalized the project.")
           ],
         )),
       ),
