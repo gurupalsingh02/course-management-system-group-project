@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text("CS261 Group Project"),
-        ),
+            child: Column(
+          children: [
+            Text("CS261 Group Project"),
+            Text("Akash has accepted and Initalized the project.")
+          ],
+        )),
       ),
     );
   }
