@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: MyRoutes.StudentAccountPage,
+      // initialRoute: MyRoutes.StudentAccountPage,
+      initialRoute: MyRoutes.HomePage,
       routes: {
         MyRoutes.HomePage: (context) => HomePage(),
         MyRoutes.AccountPage: (context) => AccountPage(),
