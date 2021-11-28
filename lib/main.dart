@@ -6,10 +6,12 @@ import 'package:course_management_system/Pages/login_page.dart';
 import 'package:course_management_system/Pages/login_page_student.dart';
 import 'package:course_management_system/Pages/to_do_page.dart';
 import 'package:course_management_system/Routes.dart';
+import 'package:course_management_system/core.dart/store.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(VxState(store: Mystore(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
