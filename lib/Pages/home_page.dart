@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                 )).color(Colors.amber).make().p20();
               },
               staggeredTileBuilder: (int index) {
-                return StaggeredTile.count(1, 1.5);
+                return StaggeredTile.count(1, 1);
               }).expand(),
         ],
       ),
