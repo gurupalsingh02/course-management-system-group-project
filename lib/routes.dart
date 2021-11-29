@@ -9,4 +9,5 @@ class MyRoutes {
   static String CurrentClassPage = "/class";
   static String CurrentAssignmentPage = "/Assignment";
   static String TeacherAccountPage = "/Teacher/Account";
+  static String TeacherLoginPage = "/Teacher/Login";
 }

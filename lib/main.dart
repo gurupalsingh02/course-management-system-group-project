@@ -6,6 +6,7 @@ import 'package:course_management_system/Pages/current_class_page.dart';
 import 'package:course_management_system/Pages/home_page.dart';
 import 'package:course_management_system/Pages/login_page.dart';
 import 'package:course_management_system/Pages/login_page_student.dart';
+import 'package:course_management_system/Pages/login_page_teacher.dart';
 import 'package:course_management_system/Pages/student_account_page.dart';
 import 'package:course_management_system/Pages/teacher_account_page.dart';
 import 'package:course_management_system/Pages/to_do_page.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.CurrentClassPage: (context) => CurrentClassPage(),
         MyRoutes.CurrentAssignmentPage: (context) => CurrentAssignmentPage(),
         MyRoutes.TeacherAccountPage: (context) => TeacherAccountPage(),
+        MyRoutes.TeacherLoginPage: (context) => TeacherLoginPage(),
       },
     );
   }

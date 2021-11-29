@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
             if ((VxState.store as Mystore).Logged_in_student) {
               Navigator.pushNamed(context, MyRoutes.HomePage);
             } else {
-              Navigator.pushNamed(context, MyRoutes.TeacherAccountPage);
+              Navigator.pushNamed(context, MyRoutes.TeacherLoginPage);
             }
           }),
           VxBox(
