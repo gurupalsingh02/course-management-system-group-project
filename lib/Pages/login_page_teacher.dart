@@ -5,15 +5,15 @@ import 'package:course_management_system/core.dart/store.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class StudentLoginPage extends StatefulWidget {
+class TeacherLoginPage extends StatefulWidget {
   @override
-  State<StudentLoginPage> createState() => _LoginPageStudentState();
+  State<TeacherLoginPage> createState() => _LoginPageStudentState();
 }
 
 final formkey = GlobalKey<FormState>();
 
-class _LoginPageStudentState extends State<StudentLoginPage> {
-  String student_username = "";
+class _LoginPageStudentState extends State<TeacherLoginPage> {
+  String teacher_username = "";
   bool change = false;
   var hidepassword = true;
   final _formkey = GlobalKey<FormState>();
@@ -23,7 +23,7 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
         change = change.toggle();
       });
       await Future.delayed(Duration(seconds: 2));
-      (VxState.store as Mystore).student.name = student_username;
+      (VxState.store as Mystore).teacher.name = teacher_username;
       change = change.toggle();
       Navigator.pushNamed(context, MyRoutes.StudentAccountPage);
     }
@@ -52,7 +52,7 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
                           if (value!.isEmpty) {
                             return "Username Can't be Empty";
                           }
-                          student_username = value.toString();
+                          teacher_username = value.toString();
                           return null;
                         },
                         // ignore: prefer_const_constructors

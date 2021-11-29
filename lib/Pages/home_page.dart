@@ -26,8 +26,8 @@ class HomePage extends StatelessWidget {
         Teacher_name: "guru",
         class_id: "",
         Assigned: [a1, a2, a3, a4]);
-    (VxState.store as Mystore).user.myclasses.add(myClass);
-    Student student = (VxState.store as Mystore).user;
+    (VxState.store as Mystore).student.myclasses.add(myClass);
+    Student student = (VxState.store as Mystore).student;
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(

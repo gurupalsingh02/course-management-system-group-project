@@ -20,7 +20,13 @@ class LoginPage extends StatelessWidget {
               .make()
               .w40(context)
               .h15(context)
-              .onTap(() {}),
+              .onTap(() {
+            if ((VxState.store as Mystore).Logged_in_student) {
+              Navigator.pushNamed(context, MyRoutes.HomePage);
+            } else {
+              Navigator.pushNamed(context, MyRoutes.TeacherAccountPage);
+            }
+          }),
           VxBox(
             child: Center(child: "Login As Student".text.bold.xl4.make().p12()),
           )
