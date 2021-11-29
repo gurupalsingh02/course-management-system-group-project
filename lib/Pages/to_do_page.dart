@@ -1,7 +1,14 @@
 // ignore_for_file: prefer_const_constructors,, avoid_unnecessary_containers
 
+import 'package:course_management_system/Widgets/Student.dart';
+import 'package:course_management_system/Widgets/asssignments.dart';
+import 'package:course_management_system/Widgets/classes.dart';
+import 'package:course_management_system/Widgets/student.dart';
+import 'package:course_management_system/core.dart/store.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../routes.dart';
 
 class ToDoPage extends StatefulWidget {
   const ToDoPage({Key? key}) : super(key: key);
@@ -53,8 +60,29 @@ class AssignedTODo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyClass currentclass = (VxState.store as Mystore).currentclass;
+    var _student = (VxState.store as Mystore).student;
     return Container(
-      child: "Assigned task will appear here.".text.bold.make(),
+      child: Column(
+        children: [
+          "Assigned task will appear here.".text.bold.make(),
+          //currentclass.Assigned[].done?
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: currentclass.Assigned.length,
+              itemBuilder: (context, index) {
+                return VxBox(
+                    child: Row(
+                  children: [
+                    currentclass.Assigned[index].heading.text.make().p20(),
+                    currentclass.Assigned[index].desc.text.make().p20(),
+                  ],
+                )).color(Colors.green).rounded.make().onTap(() {
+                  Navigator.pushNamed(context, MyRoutes.CurrentAssignmentPage);
+                }).p20();
+              }).expand(),
+        ],
+      ),
     );
   }
 }
@@ -64,8 +92,13 @@ class MissingToDo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // MyClass currentclass = (VxState.store as Mystore).currentclass;
     return Container(
-      child: "Missing task will appear here.".text.bold.make(),
+      child: Column(
+        children: [
+          "Missing task will appear here.".text.bold.make(),
+        ],
+      ),
     );
   }
 }
@@ -75,8 +108,27 @@ class DoneToDo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyClass currentclass = (VxState.store as Mystore).currentclass;
     return Container(
-      child: "Done task will appear here.".text.bold.make(),
+      child: Column(
+        children: [
+          "Done task will appear here.".text.bold.make(),
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: currentclass.Assigned.length,
+              itemBuilder: (context, index) {
+                return VxBox(
+                    child: Row(
+                  children: [
+                    currentclass.Assigned[index].heading.text.make().p20(),
+                    currentclass.Assigned[index].desc.text.make().p20(),
+                  ],
+                )).color(Colors.green).rounded.make().onTap(() {
+                  Navigator.pushNamed(context, MyRoutes.CurrentAssignmentPage);
+                }).p20();
+              }).expand(),
+        ],
+      ),
     );
   }
 }

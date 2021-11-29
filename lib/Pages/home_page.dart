@@ -15,10 +15,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Assignment a1 = Assignment(heading: "a1", desc: "this is assignment a1");
-    Assignment a2 = Assignment(heading: "a2", desc: "This is assignment a2");
-    Assignment a3 = Assignment(heading: "a3", desc: "this is assignment a3");
-    Assignment a4 = Assignment(heading: "a4", desc: "this is assignment a4");
+    Assignment a1 =
+        Assignment(heading: "a1", desc: "this is assignment a1", done: false);
+    Assignment a2 =
+        Assignment(heading: "a2", desc: "This is assignment a2", done: false);
+    Assignment a3 =
+        Assignment(heading: "a3", desc: "this is assignment a3", done: false);
+    Assignment a4 =
+        Assignment(heading: "a4", desc: "this is assignment a4", done: false);
     MyClass myClass = MyClass(
         class_name: "myclass",
         image:

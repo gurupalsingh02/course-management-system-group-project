@@ -1,9 +1,6 @@
 class Assignment {
   final String heading;
   final String desc;
-  bool done = false;
-  Assignment({
-    required this.heading,
-    required this.desc,
-  });
+  bool done;
+  Assignment({required this.heading, required this.desc, required this.done});
 }

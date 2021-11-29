@@ -41,7 +41,7 @@ class StudentAccountPage extends StatelessWidget {
                     )),
                 IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, MyRoutes.HomePage);
+                      Navigator.pushNamed(context, MyRoutes.CurrentClassPage);
                     },
                     icon: Icon(
                       Icons.person,
