@@ -33,7 +33,7 @@ class StudentAccountPage extends StatelessWidget {
                     )),
                 IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, MyRoutes.HomePage);
+                      Navigator.pushNamed(context, MyRoutes.ToDoPage);
                     },
                     icon: Icon(
                       Icons.person,
