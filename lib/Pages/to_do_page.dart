@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors,, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -39,11 +39,44 @@ class _ToDoPageState extends State<ToDoPage>
         ),
       ),
       body: TabBarView(controller: _controller, children: const [
-        Text("Assigned task will appear here."),
-        Text("Missing task will appear here."),
-        Text("Done task will appear here."),
+        AssignedTODo(),
+        MissingToDo(),
+        DoneToDo(),
       ]),
       drawer: Drawer(),
+    );
+  }
+}
+
+class AssignedTODo extends StatelessWidget {
+  const AssignedTODo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: "Assigned task will appear here.".text.bold.make(),
+    );
+  }
+}
+
+class MissingToDo extends StatelessWidget {
+  const MissingToDo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: "Missing task will appear here.".text.bold.make(),
+    );
+  }
+}
+
+class DoneToDo extends StatelessWidget {
+  const DoneToDo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: "Done task will appear here.".text.bold.make(),
     );
   }
 }

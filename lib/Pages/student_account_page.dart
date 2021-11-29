@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
-import 'package:course_management_system/Pages/home_page.dart';
 import 'package:course_management_system/core.dart/store.dart';
 import 'package:course_management_system/routes.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,7 @@ class StudentAccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _student = (VxState.store as Mystore).student;
     const imageUrl =
         "https://img.freepik.com/free-photo/happy-young-female-student-holding-notebooks-from-courses-smiling-camera-standing-spring-clothes-against-blue-background_1258-70161.jpg?size=626&ext=jpg";
     return SafeArea(
@@ -61,12 +61,8 @@ class StudentAccountPage extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Column(
                       children: [
-                        (VxState.store as Mystore).student.name.text.xl3.make(),
-                        ((VxState.store as Mystore).student.name +
-                                "123@gmail.com")
-                            .text
-                            .xl2
-                            .make(),
+                        _student.name.text.xl3.make(),
+                        (_student.name + "123@gmail.com").text.xl2.make(),
                       ],
                     ),
                   ).w60(context),
