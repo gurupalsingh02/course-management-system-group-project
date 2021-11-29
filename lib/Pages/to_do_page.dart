@@ -7,6 +7,8 @@ class ToDoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }
