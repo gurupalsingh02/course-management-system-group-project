@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
+import 'package:course_management_system/Pages/home_page.dart';
+import 'package:course_management_system/core.dart/store.dart';
+import 'package:course_management_system/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -21,19 +24,25 @@ class StudentAccountPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.HomePage);
+                    },
                     icon: Icon(
                       Icons.person,
                       size: 45,
                     )),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.HomePage);
+                    },
                     icon: Icon(
                       Icons.person,
                       size: 45,
                     )),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.HomePage);
+                    },
                     icon: Icon(
                       Icons.person,
                       size: 45,
@@ -52,13 +61,16 @@ class StudentAccountPage extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Column(
                       children: [
-                        "StudentName".text.xl3.make(),
-                        "student123@gmail.com".text.xl2.make(),
+                        (VxState.store as Mystore).user.name.text.xl3.make(),
+                        ((VxState.store as Mystore).user.name + "123@gmail.com")
+                            .text
+                            .xl2
+                            .make(),
                       ],
                     ),
-                  ),
+                  ).w60(context),
                   CircleAvatar(
-                    radius: 70,
+                    radius: 40,
                     backgroundImage: NetworkImage(imageUrl),
                   ),
                 ],

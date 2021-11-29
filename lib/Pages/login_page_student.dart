@@ -1,6 +1,7 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:course_management_system/Routes.dart';
+import 'package:course_management_system/core.dart/store.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -12,6 +13,7 @@ class StudentLoginPage extends StatefulWidget {
 final formkey = GlobalKey<FormState>();
 
 class _LoginPageStudentState extends State<StudentLoginPage> {
+  String student_username = "";
   bool change = false;
   var hidepassword = true;
   final _formkey = GlobalKey<FormState>();
@@ -21,7 +23,8 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
         change = !change;
       });
       await Future.delayed(Duration(seconds: 2));
-      Navigator.pushNamed(context, MyRoutes.HomePage);
+      (VxState.store as Mystore).user.name = student_username;
+      Navigator.pushNamed(context, MyRoutes.StudentAccountPage);
     }
   }
 
@@ -32,7 +35,11 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            VxBox().make().h20(context),
+            VxBox(
+                    child: Image.network(
+                        "https://th.bing.com/th/id/R.77a863b9186d0ddc162002144756a085?rik=8KIHTgaf%2fEBONg&riu=http%3a%2f%2fwww.klnce.edu%2fimages%2fstu_login.gif&ehk=8NHSOHSCEeLQA3Fw%2bKYZ7JNa6wfhbVYY%2b%2fNTD5iExC0%3d&risl=&pid=ImgRaw&r=0"))
+                .make()
+                .h40(context),
             Form(
                 key: _formkey,
                 child: Padding(
@@ -44,6 +51,7 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
                           if (value!.isEmpty) {
                             return "Username Can't be Empty";
                           }
+                          student_username = value.toString();
                           return null;
                         },
                         // ignore: prefer_const_constructors
@@ -68,7 +76,6 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
                           return null;
                         },
                         obscureText: hidepassword,
-                        // ignore: prefer_const_constructors
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock_outline),
                           suffixIcon: InkWell(
@@ -103,9 +110,6 @@ class _LoginPageStudentState extends State<StudentLoginPage> {
                     Center(child: change ? Icon(Icons.login) : Text("Login")),
               ),
             ),
-            "skip for now".text.color(Colors.red).bold.make().p12().onTap(() {
-              Navigator.pushNamed(context, MyRoutes.HomePage);
-            }),
           ],
         ),
       ),
