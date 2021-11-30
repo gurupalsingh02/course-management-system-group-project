@@ -15,5 +15,6 @@ class Student {
     required this.Student_id,
     required this.MyAssignments,
     required this.myclasses,
+    //required List Assigned,
   });
 }
