@@ -15,19 +15,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Assignment a1 = Assignment(heading: "a1", desc: "this is assignment a1");
-    Assignment a2 = Assignment(heading: "a2", desc: "This is assignment a2");
-    Assignment a3 = Assignment(heading: "a3", desc: "this is assignment a3");
-    Assignment a4 = Assignment(heading: "a4", desc: "this is assignment a4");
-    MyClass myClass = MyClass(
-        class_name: "myclass",
-        image:
-            "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-        Teacher_name: "guru",
-        class_id: "",
-        Assigned: [a1, a2, a3, a4]);
-    (VxState.store as Mystore).student.myclasses.add(myClass);
     Student student = (VxState.store as Mystore).student;
+    
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(

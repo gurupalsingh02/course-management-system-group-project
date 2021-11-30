@@ -10,8 +10,8 @@ class Mystore extends VxStore {
   MyClass currentclass = MyClass(
       class_name: "", image: "", Teacher_name: "", class_id: "", Assigned: []);
   bool Logged_in_student = false;
-  Student student =
-      Student(name: "", image: "", Student_id: "", Assigned: [], myclasses: []);
+  Student student = Student(
+      name: "", image: "", Student_id: "", myclasses: [], MyAssignments: []);
 
   // for teacher
   bool Logged_in_teacher = false;
@@ -28,7 +28,7 @@ class Mystore extends VxStore {
     // for student
     bool Logged_in_student = false;
     student = Student(
-        name: "", image: "", Student_id: "", Assigned: [], myclasses: []);
+        name: "", image: "", Student_id: "", myclasses: [], MyAssignments: []);
 
     // for teacher
     bool Logged_in_teacher = false;
