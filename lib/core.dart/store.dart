@@ -6,23 +6,29 @@ import 'package:course_management_system/Widgets/teacher.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Mystore extends VxStore {
+  // for full app
+  List<MyClass> allclasses = [];
   // for Student
   MyClass currentclass = MyClass(
-      class_name: "", image: "", Teacher_name: "", class_id: "", Assigned: []);
+      class_name: "",
+      image: "",
+      Teacher_name: "",
+      class_code: "",
+      Assigned: []);
   bool Logged_in_student = false;
   Student student = Student(
       name: "", image: "", Student_id: "", myclasses: [], MyAssignments: []);
 
   // for teacher
   bool Logged_in_teacher = false;
-  Teacher teacher = Teacher(name: "", image: "", Teacher_id: "", myclasses: []);
+  Teacher teacher = Teacher(name: "", image: "", Teacher_id: "");
 
   Mystore() {
     currentclass = MyClass(
         class_name: "",
         image: "",
         Teacher_name: "",
-        class_id: "",
+        class_code: "",
         Assigned: []);
 
     // for student
@@ -32,6 +38,6 @@ class Mystore extends VxStore {
 
     // for teacher
     bool Logged_in_teacher = false;
-    teacher = Teacher(name: "", image: "", Teacher_id: "", myclasses: []);
+    teacher = Teacher(name: "", image: "", Teacher_id: "");
   }
 }

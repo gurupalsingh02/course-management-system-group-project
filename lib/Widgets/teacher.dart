@@ -6,11 +6,13 @@ class Teacher {
   String name;
   String image;
   String Teacher_id;
-  List<MyClass> myclasses = [];
+  List<String> class_ids = [];
+
+  List<MyClass> get myclasses =>
+      class_ids.map((id) => MyClass.getbyid(id)).toList();
   Teacher({
     required this.name,
     required this.image,
     required this.Teacher_id,
-    required this.myclasses,
   });
 }

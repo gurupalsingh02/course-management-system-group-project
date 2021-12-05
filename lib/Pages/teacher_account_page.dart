@@ -21,7 +21,7 @@ class TeacherAccountPage extends StatelessWidget {
         image:
             "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
         Teacher_name: "guru",
-        class_id: "",
+        class_code: "",
         Assigned: [a1, a2, a3, a4]);
     (VxState.store as Mystore).teacher.myclasses.add(myClass);
 
