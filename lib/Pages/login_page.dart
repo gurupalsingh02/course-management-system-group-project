@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
               .h15(context)
               .onTap(() {
             if ((VxState.store as Mystore).Logged_in_student) {
-              Navigator.pushNamed(context, MyRoutes.HomePage);
+              Navigator.pushNamed(context, MyRoutes.TeacherHomePage);
             } else {
               Navigator.pushNamed(context, MyRoutes.TeacherLoginPage);
             }
