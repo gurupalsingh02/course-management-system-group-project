@@ -17,11 +17,11 @@ class Mystore extends VxStore {
       Assigned: []);
   bool Logged_in_student = false;
   Student student = Student(
-      name: "", image: "", Student_id: "", myclasses: [], MyAssignments: []);
+      name: "", image: "", Student_id: "", MyAssignments: [], class_ids: []);
 
   // for teacher
   bool Logged_in_teacher = false;
-  Teacher teacher = Teacher(name: "", image: "", Teacher_id: "");
+  Teacher teacher = Teacher(name: "", image: "", Teacher_id: "", class_ids: []);
 
   Mystore() {
     currentclass = MyClass(
@@ -34,10 +34,10 @@ class Mystore extends VxStore {
     // for student
     bool Logged_in_student = false;
     student = Student(
-        name: "", image: "", Student_id: "", myclasses: [], MyAssignments: []);
+        name: "", image: "", Student_id: "", MyAssignments: [], class_ids: []);
 
     // for teacher
     bool Logged_in_teacher = false;
-    teacher = Teacher(name: "", image: "", Teacher_id: "");
+    teacher = Teacher(name: "", image: "", Teacher_id: "", class_ids: []);
   }
 }

@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
 import 'package:course_management_system/Widgets/Student.dart';
-import 'package:course_management_system/Widgets/asssignments.dart';
-import 'package:course_management_system/Widgets/classes.dart';
 import 'package:course_management_system/core.dart/store.dart';
 import 'package:course_management_system/routes.dart';
 import 'package:flutter/material.dart';
@@ -15,31 +13,14 @@ class StudentHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Assignment a1 = Assignment(
-      heading: "a1",
-      desc: "this is assignment a1",
-    );
-    Assignment a2 = Assignment(
-      heading: "a2",
-      desc: "This is assignment a2",
-    );
-    Assignment a3 = Assignment(
-      heading: "a3",
-      desc: "this is assignment a3",
-    );
-    Assignment a4 = Assignment(
-      heading: "a4",
-      desc: "this is assignment a4",
-    );
     Student student = (VxState.store as Mystore).student;
-
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(
         title: Text("Home Page"),
       ),
       body: StaggeredGridView.countBuilder(
-          itemCount: student.myclasses.length,
+          itemCount: student.MyClasses.length,
           crossAxisCount: 2,
           itemBuilder: (context, index) {
             return VxBox(
@@ -47,16 +28,16 @@ class StudentHomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Image.network(student.myclasses[index].image)
+                Image.network(student.MyClasses[index].image)
                     .box
                     .rounded
                     .p8
                     .color(Colors.black)
                     .make(),
-                student.myclasses[index].class_name.text.underline.bold
+                student.MyClasses[index].class_name.text.underline.bold
                     .make()
                     .p8(),
-                ("Teacher - " + student.myclasses[index].Teacher_name)
+                ("Teacher - " + student.MyClasses[index].Teacher_name)
                     .text
                     .underline
                     .capitalize
@@ -72,7 +53,7 @@ class StudentHomePage extends StatelessWidget {
                 .make()
                 .onTap(() {
                   (VxState.store as Mystore).currentclass =
-                      student.myclasses[index];
+                      student.MyClasses[index];
                   Navigator.pushNamed(context, MyRoutes.CurrentClassPage);
                 })
                 .p20()

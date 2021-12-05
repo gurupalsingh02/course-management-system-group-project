@@ -24,18 +24,15 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
     Teacher teacher = (VxState.store as Mystore).teacher;
     create_class() {
       int length = (VxState.store as Mystore).allclasses.length;
-      String temp_class_code = "myclass/${teacher.name}/${length}}";
+      String temp_class_code = "myclass/${length}}";
       (VxState.store as Mystore).allclasses.add(MyClass(
           class_name: "myclass",
           image:
               "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
           Teacher_name: "guru",
-          class_code: "myclass/${teacher.name}/${length}}",
+          class_code: temp_class_code,
           Assigned: []));
-      (VxState.store as Mystore)
-          .teacher
-          .myclasses
-          .add(MyClass.getbyid(temp_class_code));
+      (VxState.store as Mystore).teacher.class_ids.add(temp_class_code);
     }
 
     return Scaffold(
@@ -46,9 +43,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
           IconButton(
             onPressed: () {
               create_class();
-              setState(() {
-                teacher = (VxState.store as Mystore).teacher;
-              });
+              setState(() {});
             },
             icon: Icon(
               Icons.add,
