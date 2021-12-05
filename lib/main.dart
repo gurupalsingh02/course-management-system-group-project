@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.CurrentAssignmentPage: (context) => CurrentAssignmentPage(),
         MyRoutes.TeacherAccountPage: (context) => TeacherAccountPage(),
         MyRoutes.TeacherHomePage: (context) => TeacherHomePage(),
+        MyRoutes.TeacherLoginPage: (context) => TeacherLoginPage(),
       },
     );
   }

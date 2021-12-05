@@ -25,7 +25,7 @@ class _LoginPageStudentState extends State<TeacherLoginPage> {
       await Future.delayed(Duration(seconds: 2));
       (VxState.store as Mystore).teacher.name = teacher_username;
       change = change.toggle();
-      Navigator.pushNamed(context, MyRoutes.TeacherAccountPage);
+      Navigator.pushNamed(context, MyRoutes.TeacherHomePage);
     }
   }
 

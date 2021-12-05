@@ -11,9 +11,14 @@ import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class TeacherHomePage extends StatelessWidget {
+class TeacherHomePage extends StatefulWidget {
   const TeacherHomePage({Key? key}) : super(key: key);
 
+  @override
+  State<TeacherHomePage> createState() => _TeacherHomePageState();
+}
+
+class _TeacherHomePageState extends State<TeacherHomePage> {
   @override
   Widget build(BuildContext context) {
     Teacher teacher = (VxState.store as Mystore).teacher;
@@ -38,9 +43,18 @@ class TeacherHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
         actions: [
-          Icon(Icons.add).onTap(() {
-            create_class();
-          })
+          IconButton(
+            onPressed: () {
+              create_class();
+              setState(() {
+                teacher = (VxState.store as Mystore).teacher;
+              });
+            },
+            icon: Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
+          ).px64(),
         ],
       ),
       body: StaggeredGridView.countBuilder(
