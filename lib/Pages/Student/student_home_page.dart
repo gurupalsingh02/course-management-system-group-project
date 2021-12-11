@@ -8,9 +8,14 @@ import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class StudentHomePage extends StatelessWidget {
+class StudentHomePage extends StatefulWidget {
   const StudentHomePage({Key? key}) : super(key: key);
 
+  @override
+  State<StudentHomePage> createState() => _StudentHomePageState();
+}
+
+class _StudentHomePageState extends State<StudentHomePage> {
   @override
   Widget build(BuildContext context) {
     Student student = (VxState.store as Mystore).student;
@@ -18,6 +23,18 @@ class StudentHomePage extends StatelessWidget {
       drawer: Drawer(),
       appBar: AppBar(
         title: Text("Home Page"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, MyRoutes.CreateClassPage);
+              setState(() {});
+            },
+            icon: Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
+          ).px64(),
+        ],
       ),
       body: StaggeredGridView.countBuilder(
           itemCount: student.MyClasses.length,
