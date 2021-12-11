@@ -1,8 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, unnecessary_brace_in_string_interps, non_constant_identifier_names
 
-import 'package:course_management_system/Widgets/Student.dart';
-import 'package:course_management_system/Widgets/asssignments.dart';
-import 'package:course_management_system/Widgets/classes.dart';
 import 'package:course_management_system/Widgets/teacher.dart';
 import 'package:course_management_system/core.dart/store.dart';
 import 'package:course_management_system/routes.dart';
@@ -22,19 +19,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
   @override
   Widget build(BuildContext context) {
     Teacher teacher = (VxState.store as Mystore).teacher;
-    create_class() {
-      int length = (VxState.store as Mystore).allclasses.length;
-      String temp_class_code = "myclass/${length}}";
-      (VxState.store as Mystore).allclasses.add(MyClass(
-          class_name: "myclass",
-          image:
-              "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-          Teacher_name: "guru",
-          class_code: temp_class_code,
-          Assigned: []));
-      (VxState.store as Mystore).teacher.class_ids.add(temp_class_code);
-    }
-
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(
@@ -42,7 +26,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              create_class();
+              Navigator.pushNamed(context, MyRoutes.CreateClassPage);
               setState(() {});
             },
             icon: Icon(
@@ -61,12 +45,12 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Image.network(teacher.myclasses[index].image)
-                    .box
-                    .rounded
-                    .p8
-                    .color(Colors.black)
-                    .make(),
+                // Image.network(teacher.myclasses[index].image)
+                //     .box
+                //     .rounded
+                //     .p8
+                //     .color(Colors.black)
+                //     .make(),
                 teacher.myclasses[index].class_name.text.underline.bold
                     .make()
                     .p8(),
