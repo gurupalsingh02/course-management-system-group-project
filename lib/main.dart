@@ -17,6 +17,8 @@ import 'package:course_management_system/core.dart/store.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'Pages/Student/add_class_page.dart';
+
 void main() {
   runApp(VxState(store: Mystore(), child: MyApp()));
 }
@@ -42,6 +44,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.TeacherHomePage: (context) => TeacherHomePage(),
         MyRoutes.TeacherLoginPage: (context) => TeacherLoginPage(),
         MyRoutes.CreateClassPage: (context) => ClassCreatePage(),
+        MyRoutes.ClassAddPage: (context) => ClassAddPage(),
       },
     );
   }

@@ -26,7 +26,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, MyRoutes.CreateClassPage);
+              Navigator.pushNamed(context, MyRoutes.ClassAddPage);
               setState(() {});
             },
             icon: Icon(

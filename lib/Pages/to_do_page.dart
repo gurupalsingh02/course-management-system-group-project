@@ -61,6 +61,12 @@ class AssignedTODo extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Assignment> _allAssignments =
         (VxState.store as Mystore).student.MyAssignments;
+    Assignment a1 = Assignment(heading: "a1", desc: "desc1");
+    Assignment a2 = Assignment(heading: "a2", desc: "desc2");
+    Assignment a3 = Assignment(heading: "a3", desc: "desc3");
+    _allAssignments.add(a1);
+    _allAssignments.add(a2);
+    _allAssignments.add(a3);
     for (var i = 0; i < _allAssignments.length; i++) {
       if (_allAssignments[i].done == true) {
         _allAssignments.remove(_allAssignments[i]);
@@ -123,7 +129,7 @@ class DoneToDo extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          _allAssignments.isNotEmpty
+          _allAssignments.isEmpty
               ? "Done task will appear here.".text.bold.make()
               : ListView.builder(
                   shrinkWrap: true,
