@@ -16,6 +16,12 @@ class ToDoPage extends StatefulWidget {
 class _ToDoPageState extends State<ToDoPage>
     with SingleTickerProviderStateMixin {
   late TabController _controller;
+  String profileicon =
+      "https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/user_profile_man-512.png";
+  String homeicon =
+      "https://cdn0.iconfinder.com/data/icons/aami-web-internet/64/simple-01-256.png";
+  String progressicon =
+      "https://cdn3.iconfinder.com/data/icons/business-212/48/trend-256.png";
   @override
   void initState() {
     super.initState();
@@ -47,6 +53,31 @@ class _ToDoPageState extends State<ToDoPage>
         DoneToDo(),
       ]),
       drawer: Drawer(),
+      bottomNavigationBar: BottomNavigationBar(
+          selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+          selectedItemColor: Colors.red,
+          currentIndex: 0,
+          items: [
+            BottomNavigationBarItem(
+              icon: Image(
+                image: NetworkImage(homeicon),
+                height: 25,
+              ),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+                icon: Image(
+                  image: NetworkImage(progressicon),
+                  height: 25,
+                ),
+                label: "Progress"),
+            BottomNavigationBarItem(
+                icon: Image(
+                  image: NetworkImage(profileicon),
+                  height: 25,
+                ),
+                label: "Profile"),
+          ]),
     );
   }
 }
