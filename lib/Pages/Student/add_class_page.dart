@@ -4,8 +4,8 @@ import 'package:course_management_system/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class ClassCreatePage extends StatelessWidget {
-  const ClassCreatePage({Key? key}) : super(key: key);
+class ClassAddPage extends StatelessWidget {
+  const ClassAddPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
