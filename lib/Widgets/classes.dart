@@ -22,6 +22,6 @@ class MyClass {
   static MyClass getbyid(String id) {
     return (VxState.store as Mystore)
         .allclasses
-        .firstWhere((element) => element.class_code == id, orElse: null);
+        .firstWhere((element) => element.class_code.compareTo(id) == 0);
   }
 }

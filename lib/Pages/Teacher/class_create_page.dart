@@ -10,24 +10,24 @@ class ClassCreatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formkey = GlobalKey<FormState>();
-    String classname = "";
-    String classimage = "";
-    String teachername = "";
+    String classname = "abc";
+    String classimage = "abc";
+    String teachername = "abc";
     create_class({
-      required String classname,
-      required String classimage,
-      required String teachername,
+      required String name_of_class,
+      required String image_of_class,
+      required String teachername_of_class,
     }) {
       if (formkey.currentState!.validate()) {
         int length = (VxState.store as Mystore).allclasses.length;
         String temp_class_code = "allclass/${length}";
+        (VxState.store as Mystore).teacher.class_ids.add(temp_class_code);
         (VxState.store as Mystore).allclasses.add(MyClass(
-            class_name: classname,
-            image: classimage,
-            Teacher_name: teachername,
+            class_name: name_of_class,
+            image: image_of_class,
+            Teacher_name: teachername_of_class,
             class_code: temp_class_code,
             Assigned: []));
-        (VxState.store as Mystore).teacher.class_ids.add(temp_class_code);
         Navigator.pushNamed(context, MyRoutes.TeacherHomePage);
       }
     }
@@ -44,7 +44,7 @@ class ClassCreatePage extends StatelessWidget {
                         if (value!.isEmpty) {
                           return "Class Name Can't be Empty";
                         }
-                        classname = value;
+                        classname = value.toString();
                         return null;
                       },
                       decoration: InputDecoration(
@@ -55,7 +55,7 @@ class ClassCreatePage extends StatelessWidget {
                         if (value!.isEmpty) {
                           return "Class Image Url Can't be Empty";
                         }
-                        classimage = value;
+                        classimage = value.toString();
                         return null;
                       },
                       decoration: InputDecoration(
@@ -66,7 +66,7 @@ class ClassCreatePage extends StatelessWidget {
                         if (value!.isEmpty) {
                           return "Class Teacher Name Can't be Empty";
                         }
-                        teachername = value;
+                        teachername = value.toString();
                         return null;
                       },
                       decoration: InputDecoration(
@@ -84,9 +84,9 @@ class ClassCreatePage extends StatelessWidget {
               .make()
               .onTap(() {
             create_class(
-                classname: classname,
-                classimage: classimage,
-                teachername: teachername);
+                image_of_class: classimage,
+                name_of_class: classname,
+                teachername_of_class: teachername);
           }),
         ],
       ),

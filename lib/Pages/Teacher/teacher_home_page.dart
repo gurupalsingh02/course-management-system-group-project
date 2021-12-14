@@ -56,8 +56,8 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                     .p8(),
                 ("Teacher - " + teacher.myclasses[index].Teacher_name)
                     .text
-                    .underline
                     .capitalize
+                    .underline
                     .bold
                     .color(Colors.red)
                     .make()

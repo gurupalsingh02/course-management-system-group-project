@@ -17,7 +17,7 @@ class CurrentClassPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(currentclass.image).wFull(context).h32(context),
+          // Image.network(currentclass.image).wFull(context).h32(context),
           "Assignments :".text.align(TextAlign.start).bold.xl2.make().p12(),
           ListView.builder(
               shrinkWrap: true,
