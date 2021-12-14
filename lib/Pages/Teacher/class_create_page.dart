@@ -18,18 +18,16 @@ class ClassCreatePage extends StatelessWidget {
       required String image_of_class,
       required String teachername_of_class,
     }) {
-      if (formkey.currentState!.validate()) {
-        int length = (VxState.store as Mystore).allclasses.length;
-        String temp_class_code = "allclass/${length}";
-        (VxState.store as Mystore).teacher.class_ids.add(temp_class_code);
-        (VxState.store as Mystore).allclasses.add(MyClass(
-            class_name: name_of_class,
-            image: image_of_class,
-            Teacher_name: teachername_of_class,
-            class_code: temp_class_code,
-            Assigned: []));
-        Navigator.pushNamed(context, MyRoutes.TeacherHomePage);
-      }
+      int length = (VxState.store as Mystore).allclasses.length;
+      String temp_class_code = "allclass/${length}";
+      (VxState.store as Mystore).teacher.class_ids.add(temp_class_code);
+      (VxState.store as Mystore).allclasses.add(MyClass(
+          class_name: name_of_class,
+          image: image_of_class,
+          Teacher_name: teachername_of_class,
+          class_code: temp_class_code,
+          Assigned: []));
+      Navigator.pushNamed(context, MyRoutes.TeacherHomePage);
     }
 
     return Material(
@@ -56,6 +54,7 @@ class ClassCreatePage extends StatelessWidget {
                           return "Class Image Url Can't be Empty";
                         }
                         classimage = value.toString();
+                        print(classimage);
                         return null;
                       },
                       decoration: InputDecoration(
@@ -83,10 +82,12 @@ class ClassCreatePage extends StatelessWidget {
               .color(Colors.lightBlue)
               .make()
               .onTap(() {
-            create_class(
-                image_of_class: classimage,
-                name_of_class: classname,
-                teachername_of_class: teachername);
+            if (formkey.currentState!.validate()) {
+              create_class(
+                  image_of_class: classimage,
+                  name_of_class: classname,
+                  teachername_of_class: teachername);
+            }
           }),
         ],
       ),

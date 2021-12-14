@@ -69,12 +69,10 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                 .border(color: Colors.lightBlue, width: 5)
                 .make()
                 .onTap(() {
-                  (VxState.store as Mystore).currentclass =
-                      teacher.myclasses[index];
-                  Navigator.pushNamed(context, MyRoutes.CurrentClassPage);
-                })
-                .p20()
-                .expand();
+              (VxState.store as Mystore).currentclass =
+                  teacher.myclasses[index];
+              Navigator.pushNamed(context, MyRoutes.CurrentClassPage);
+            }).p20();
           },
           staggeredTileBuilder: (int index) {
             return StaggeredTile.count(1, 1.2);
