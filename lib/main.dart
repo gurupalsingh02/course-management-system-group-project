@@ -3,6 +3,7 @@
 import 'package:course_management_system/Pages/Student/login_page_student.dart';
 import 'package:course_management_system/Pages/Student/student_account_page.dart';
 import 'package:course_management_system/Pages/Student/student_home_page.dart';
+import 'package:course_management_system/Pages/Teacher/assignment_create_page.dart';
 import 'package:course_management_system/Pages/Teacher/class_create_page.dart';
 import 'package:course_management_system/Pages/Teacher/login_page_teacher.dart';
 import 'package:course_management_system/Pages/Teacher/teacher_account_page.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.TeacherLoginPage: (context) => TeacherLoginPage(),
         MyRoutes.CreateClassPage: (context) => ClassCreatePage(),
         MyRoutes.ClassAddPage: (context) => ClassAddPage(),
+        MyRoutes.CreateAssignmentPage: (context) => AssignmentCreatePage(),
       },
     );
   }

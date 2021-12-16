@@ -13,4 +13,5 @@ class MyRoutes {
   static String TeacherHomePage = "/Teacher/Home";
   static String CreateClassPage = "/Teacher/Home/Create-Class";
   static String ClassAddPage = "/Teacher/Home/Add-Class";
+  static String CreateAssignmentPage = "/Teacher/Home/create_assignment";
 }

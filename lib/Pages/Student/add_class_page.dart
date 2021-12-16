@@ -23,7 +23,7 @@ class ClassAddPage extends StatelessWidget {
                         if (value!.isEmpty) {
                           return "Class Code Can't be Empty";
                         }
-                        classcode = value;
+                        classcode = value.toString();
                         return null;
                       },
                       decoration: InputDecoration(
@@ -41,7 +41,12 @@ class ClassAddPage extends StatelessWidget {
               .make()
               .onTap(() {
             if (formkey.currentState!.validate()) {
-              (VxState.store as Mystore).student.class_ids.add(classcode);
+              if (!(VxState.store as Mystore)
+                  .student
+                  .class_ids
+                  .contains(classcode)) {
+                (VxState.store as Mystore).student.class_ids.add(classcode);
+              }
               Navigator.pushNamed(context, MyRoutes.HomePage);
             }
           }),

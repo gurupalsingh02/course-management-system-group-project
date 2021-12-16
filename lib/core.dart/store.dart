@@ -1,11 +1,13 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
 import 'package:course_management_system/Widgets/Student.dart';
+import 'package:course_management_system/Widgets/asssignments.dart';
 import 'package:course_management_system/Widgets/classes.dart';
 import 'package:course_management_system/Widgets/teacher.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Mystore extends VxStore {
+  Assignment current_assignment = Assignment(heading: "", desc: "");
   // for full app
   List<MyClass> allclasses = [];
   // for Student
@@ -24,6 +26,7 @@ class Mystore extends VxStore {
   Teacher teacher = Teacher(name: "", image: "", Teacher_id: "", class_ids: []);
 
   Mystore() {
+    Assignment current_assignment = Assignment(heading: "", desc: "");
     currentclass = MyClass(
         class_name: "",
         image: "",
