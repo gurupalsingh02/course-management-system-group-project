@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
+import 'package:course_management_system/Pages/login_page_teacher.dart';
+import 'package:course_management_system/Pages/student_account_page.dart';
 import 'package:course_management_system/Widgets/asssignments.dart';
 import 'package:course_management_system/Widgets/classes.dart';
 import 'package:course_management_system/core.dart/store.dart';
@@ -7,9 +9,37 @@ import 'package:course_management_system/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class TeacherAccountPage extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:course_management_system/model/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+class TeacherAccountPage extends StatefulWidget {
   const TeacherAccountPage({Key? key}) : super(key: key);
 
+  @override
+  TeacherHomeScreen createState() => TeacherHomeScreen();
+}
+
+
+class TeacherHomeScreen extends State<TeacherAccountPage> {
+  // const TeacherAccountPage({Key? key}) : super(key: key);
+
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Assignment a1 = Assignment(heading: "a1", desc: "this is assignment a1");
@@ -64,41 +94,53 @@ class TeacherAccountPage extends StatelessWidget {
               ],
             ),
           ),
-          body: Column(
-            children: [
-              VxBox(
-                      child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(top: 70),
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      children: [
-                        (VxState.store as Mystore).teacher.name.text.xl3.make(),
-                        ((VxState.store as Mystore).teacher.name +
-                                "123@gmail.com")
-                            .text
-                            .xl2
-                            .make(),
-                      ],
-                    ),
-                  ).w60(context),
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage(imageUrl),
-                  ),
-                ],
-              ))
-                  .green100
-                  .py16
-                  .px16
-                  .make()
-                  .wFull(context)
-                  .py8()
-                  .hOneForth(context),
+          body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 150,
+                child: Image.asset("assets/logo.png", fit: BoxFit.contain),
+              ),
+              Text(
+                "Welcome Back",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  )),
+              Text("${loggedInUser.email}",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              ActionChip(
+                  label: Text("Logout"),
+                  onPressed: () {
+                    logout(context);
+                  }),
             ],
-          )),
+          ),
+        ),
+      ),
+        ),
     );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => TeacherLoginScreen()));
   }
 }

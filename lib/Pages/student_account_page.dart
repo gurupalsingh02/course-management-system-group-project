@@ -1,13 +1,40 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
+import 'package:course_management_system/Pages/login_page_student.dart';
 import 'package:course_management_system/core.dart/store.dart';
 import 'package:course_management_system/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class StudentAccountPage extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:course_management_system/model/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+class StudentAccountPage extends StatefulWidget {
   const StudentAccountPage({Key? key}) : super(key: key);
 
+  @override
+  StudentHomeScreen createState() => StudentHomeScreen();
+}
+
+class  StudentHomeScreen extends State<StudentAccountPage> {
+  // const StudentAccountPage({Key? key}) : super(key: key);
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final _student = (VxState.store as Mystore).student;
@@ -50,37 +77,54 @@ class StudentAccountPage extends StatelessWidget {
               ],
             ),
           ),
-          body: Column(
-            children: [
-              VxBox(
-                      child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(top: 70),
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      children: [
-                        _student.name.text.xl3.make(),
-                        (_student.name + "123@gmail.com").text.xl2.make(),
-                      ],
-                    ),
-                  ).w60(context),
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage(imageUrl),
-                  ),
-                ],
-              ))
-                  .green100
-                  .py16
-                  .px16
-                  .make()
-                  .wFull(context)
-                  .py8()
-                  .hOneForth(context),
+          body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 150,
+                child: Image.asset("assets/logo.png", fit: BoxFit.contain),
+              ),
+              Text(
+                "Welcome Back",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  )),
+              Text("${loggedInUser.email}",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              ActionChip(
+                  label: Text("Logout"),
+                  onPressed: () {
+                    logout(context);
+                  }),
             ],
-          )),
+          ),
+        ),
+      ),
+        ),
     );
   }
+
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => StudentLoginScreen()));
+  }
+
 }

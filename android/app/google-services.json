@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "541318436293",
+    "project_id": "studentaccount-b8632",
+    "storage_bucket": "studentaccount-b8632.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541318436293:android:445e92190f14f8056667ac",
+        "android_client_info": {
+          "package_name": "com.example.course_management_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541318436293-k088bq4t0t24sdae3262129g3enfaddf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBE8zuNlKooAruxTKM1ipMuBOe9ndulP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541318436293-k088bq4t0t24sdae3262129g3enfaddf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

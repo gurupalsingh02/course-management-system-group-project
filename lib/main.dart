@@ -14,10 +14,13 @@ import 'package:course_management_system/Routes.dart';
 import 'package:course_management_system/core.dart/store.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'Pages/student_account_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(VxState(store: Mystore(), child: MyApp()));
 }
 
@@ -34,12 +37,12 @@ class MyApp extends StatelessWidget {
         MyRoutes.AccountPage: (context) => AccountPage(),
         MyRoutes.ToDoPage: (context) => ToDoPage(),
         MyRoutes.LoginPage: (context) => LoginPage(),
-        MyRoutes.StudentLoginPage: (context) => StudentLoginPage(),
+        MyRoutes.StudentLoginPage: (context) => StudentLoginScreen(),
         MyRoutes.StudentAccountPage: (context) => StudentAccountPage(),
         MyRoutes.CurrentClassPage: (context) => CurrentClassPage(),
         MyRoutes.CurrentAssignmentPage: (context) => CurrentAssignmentPage(),
         MyRoutes.TeacherAccountPage: (context) => TeacherAccountPage(),
-        MyRoutes.TeacherLoginPage: (context) => TeacherLoginPage(),
+        MyRoutes.TeacherLoginPage: (context) => TeacherLoginScreen(),
       },
     );
   }
