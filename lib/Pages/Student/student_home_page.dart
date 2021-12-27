@@ -45,12 +45,12 @@ class _StudentHomePageState extends State<StudentHomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                // Image.network(student.MyClasses[index].image)
-                //     .box
-                //     .rounded
-                //     .p8
-                //     .color(Colors.black)
-                //     .make(),
+                Image.network(student.MyClasses[index].image)
+                    .box
+                    .rounded
+                    .p8
+                    .color(Colors.black)
+                    .make(),
                 student.MyClasses[index].class_name.text.underline.bold
                     .make()
                     .p8(),
